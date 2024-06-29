@@ -11,6 +11,8 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["url_shortener"]
 urls_collection = db["urls"]  # Specify the collection name
 
+# urls_collection.delete_many({"long_url": "https://www.youtube.com/"})
+
 # Function to generate a unique short code
 def generate_short_code():
     chars = string.ascii_lowercase + string.digits
@@ -31,6 +33,11 @@ def shorten_url():
 
     if not long_url:
         return "Invalid URL format!", 400
+    
+    url = urls_collection.find_one({"long_url": long_url})
+    if url:
+        print(f"{long_url} exists already")
+        return jsonify({"short_url": f"/{url['short_code']}"})
 
     short_code = generate_short_code()
     new_url = {"long_url": long_url, "short_code": short_code}
@@ -42,6 +49,9 @@ def shorten_url():
 
 @app.route('/<short_code>')
 def redirect_url(short_code):
+    for document in urls_collection.find({}):
+        print(document)
+
     url = urls_collection.find_one({"short_code": short_code})
     if url:
         return redirect(url["long_url"])
