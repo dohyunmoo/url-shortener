@@ -1,5 +1,11 @@
 # url-shortener
-URL shortener service with Python Backend
+URL shortener service with Python
+- Python (Flask)
+- HTML, CSS, JS
+- Bootstrap
 
 ## How to run (serverside)
-`python app.py`
+```
+pip install -r requirements.txt
+python app.py
+```
