@@ -9,18 +9,31 @@ form.addEventListener("submit", (event) => {
 
     console.log(longUrl);
 
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "long_url": longUrl })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            shortUrlDisplay.textContent = data.error;
-        } else {
-            shortUrlDisplay.textContent = data.short_url;
-        }
-    })
-    .catch(error => console.error(error));
+    if (validateUrl(longUrl)) {
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "long_url": longUrl })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                shortUrlDisplay.textContent = data.error;
+            } else {
+                shortUrlDisplay.textContent = data.short_url;
+            }
+        })
+        .catch(error => console.error(error));
+    } else {
+        console.error("invalid URL");
+    }
 });
+
+function validateUrl(urlString) {
+    try {
+        new URL(urlString);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
