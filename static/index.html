@@ -2,15 +2,20 @@
 {% block title %}url shortener{% endblock %}
 
 {% block content %}
-<h2 class="mx-auto">URL Shortener</h2>
-<form id="long-url-form">
-    <div class="input-group mb-3 rounded w-50">
-        <!-- <label for="long-url">Enter URL: </label> -->
-        <input type="text" name="" id="long-url" class="form-control" placeholder="Enter URL"/>
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary" id="long-url-submit">submit</button>
+<div class="container">
+    <h2 class="mx-auto">URL Shortener</h2>
+    <form id="long-url-form">
+        <div class="input-group mb-3 rounded w-50">
+            <!-- <label for="long-url">Enter URL: </label> -->
+            <input type="text" name="" id="long-url" class="form-control" placeholder="Enter URL"/>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary" id="long-url-submit">submit</button>
+            </div>
         </div>
+    </form>
+    <div class="row" id="result">
+        <div id="short-url" class="font-italic col-md-4"></div>
+        <button class="btn btn-dark col-md-2" id="go">Go to site</button>
     </div>
-</form>
-<div id="short-url" class="font-italic">generated short url</div>
+</div>
 {% endblock %}

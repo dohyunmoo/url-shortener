@@ -37,3 +37,14 @@ function validateUrl(urlString) {
         return false;
     }
 }
+
+const goButton = document.getElementById("go");
+const shortenedUrl = document.getElementById("short-url");
+
+goButton.addEventListener("click", (event) => {
+    const mainUrl = "http://127.0.0.1:5000/";
+    if (shortenedUrl.textContent != ""){
+        console.log(mainUrl + shortenedUrl.textContent);
+        window.location.replace(mainUrl + shortenedUrl.textContent);
+    }
+})
