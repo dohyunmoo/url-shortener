@@ -5,3 +5,21 @@ h2 {
 #long-url-form {
     width: 100%;
 }
+
+#url-input {
+    width: 50%;
+}
+
+#result {
+    width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+    #url-input {
+        width: 100%;
+    }
+
+    #result {
+        width: 100%;
+    }
+}

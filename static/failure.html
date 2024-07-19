@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>failed to find {{ short_url }}</h2>
+<div class="container">
+    <h2>Short-Code <span class="fst-italic">{{ short_url }}</span> is not a valid shortened URL</h2>
+    <button class="btn btn-dark col-md-2" id="back">Go Home</button>
+</div>
+<script src="{{ url_for('static', filename='failure.js') }}"></script>
 {% endblock %}
