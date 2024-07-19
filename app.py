@@ -59,4 +59,4 @@ def redirect_url(short_code):
         return render_template("failure.html", short_url=short_code)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
