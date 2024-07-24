@@ -2,11 +2,11 @@ h2 {
     padding-top: 15px;
 }
 
-#long-url-form {
+#long-url-form, #emoji-form {
     width: 100%;
 }
 
-#url-input {
+#url-input, #emoji-input {
     width: 50%;
 }
 
@@ -15,7 +15,7 @@ h2 {
 }
 
 @media screen and (max-width: 767px) {
-    #url-input {
+    #url-input, #emoji-input {
         width: 100%;
     }
 

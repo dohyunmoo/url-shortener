@@ -1,8 +1,11 @@
-const form = document.getElementById("long-url-form");
+const urlForm = document.getElementById("long-url-form");
 const urlInput = document.getElementById("long-url");
 const shortUrlDisplay = document.getElementById("short-url");
 
-form.addEventListener("submit", (event) => {
+const emojiForm = document.getElementById("emoji-form");
+const emojiInput = document.getElementById("custom-emoji-url");
+
+urlForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const longUrl = urlInput.value;
@@ -34,6 +37,28 @@ function validateUrl(urlString) {
         new URL(urlString);
         return true;
     } catch (error) {
+        return false;
+    }
+}
+
+emojiForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const customEmojis = emojiInput.value;
+
+    console.log(customEmojis);
+
+    if (validateSupportedEmojis(customEmojis)) {
+
+    } else {
+        console.error("unsupported input types");
+    }
+
+
+});
+
+function validateSupportedEmojis(emojiString) {
+    if (emojiString.length != 4) {
         return false;
     }
 }
