@@ -9,22 +9,14 @@
             <!-- <label for="long-url">Enter URL: </label> -->
             <input type="text" name="" id="long-url" class="form-control" placeholder="Enter URL"/>
             <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-secondary" id="long-url-submit">Submit</button>
+                <button type="submit" class="btn btn-outline-secondary" id="long-url-submit">Generate</button>
             </div>
         </div>
     </form>
-    <form id="emoji-form">
-        <div class="input-group mb-3 rounded" id="emoji-input">
-            <input type="text" name="" id="custom-emoji-url" class="form-control" placeholder="Enter 4 custom emojis">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-dark btn-outline-primary" id="random-emoji-generate">Random Generate</button>
-            </div>
-            <div id="emoji field"></div>
-        </div>
-    </form>
-    <div class="row row-cols-sm-2" id="result">
-        <div id="short-url" class="font-italic col-lg-8 col-sm-6"></div>
-        <button class="btn btn-dark col-lg-4 col-sm-6" id="go">Go to site</button>
+    <div class="row row-cols-sm-3" id="result">
+        <div id="short-url" class="font-italic col"></div>
+        <!-- <button class="btn btn-dark btn-outline-light col" id="regen">Regenerate</button> -->
+        <button class="btn btn-dark col" id="go">Go to site</button>
     </div>
 </div>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
