@@ -1,8 +1,9 @@
-const form = document.getElementById("long-url-form");
+const urlForm = document.getElementById("long-url-form");
 const urlInput = document.getElementById("long-url");
 const shortUrlDisplay = document.getElementById("short-url");
+const emojiUrlDisplay = document.getElementById("emoji-url");
 
-form.addEventListener("submit", (event) => {
+urlForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const longUrl = urlInput.value;
@@ -19,8 +20,10 @@ form.addEventListener("submit", (event) => {
         .then(data => {
             if (data.error) {
                 shortUrlDisplay.textContent = data.error;
+                emojiUrlDisplay.textContent = data.error;
             } else {
                 shortUrlDisplay.textContent = data.short_url;
+                emojiUrlDisplay.textContent = data.emoji_code;
             }
         })
         .catch(error => console.error(error));
@@ -47,4 +50,10 @@ goButton.addEventListener("click", () => {
         console.log(mainUrl + shortenedUrl.textContent);
         window.location.replace(mainUrl + shortenedUrl.textContent);
     }
-})
+});
+
+// const regenerateButton = document.getElementById("regen");
+
+// regenerateButton.addEventListener("click", () => {
+
+// });
