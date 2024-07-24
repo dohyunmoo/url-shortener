@@ -1,9 +1,7 @@
 const urlForm = document.getElementById("long-url-form");
 const urlInput = document.getElementById("long-url");
 const shortUrlDisplay = document.getElementById("short-url");
-
-const emojiForm = document.getElementById("emoji-form");
-const emojiInput = document.getElementById("custom-emoji-url");
+const emojiUrlDisplay = document.getElementById("emoji-url");
 
 urlForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -22,8 +20,10 @@ urlForm.addEventListener("submit", (event) => {
         .then(data => {
             if (data.error) {
                 shortUrlDisplay.textContent = data.error;
+                emojiUrlDisplay.textContent = data.error;
             } else {
                 shortUrlDisplay.textContent = data.short_url;
+                emojiUrlDisplay.textContent = data.emoji_code;
             }
         })
         .catch(error => console.error(error));
@@ -41,28 +41,6 @@ function validateUrl(urlString) {
     }
 }
 
-emojiForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const customEmojis = emojiInput.value;
-
-    console.log(customEmojis);
-
-    if (validateSupportedEmojis(customEmojis)) {
-
-    } else {
-        console.error("unsupported input types");
-    }
-
-
-});
-
-function validateSupportedEmojis(emojiString) {
-    if (emojiString.length != 4) {
-        return false;
-    }
-}
-
 const goButton = document.getElementById("go");
 const shortenedUrl = document.getElementById("short-url");
 
@@ -72,4 +50,10 @@ goButton.addEventListener("click", () => {
         console.log(mainUrl + shortenedUrl.textContent);
         window.location.replace(mainUrl + shortenedUrl.textContent);
     }
-})
+});
+
+// const regenerateButton = document.getElementById("regen");
+
+// regenerateButton.addEventListener("click", () => {
+
+// });
